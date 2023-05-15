@@ -17,14 +17,14 @@ public class C05_FileDownloadTest extends TestBase {
         //2. https://the-internet.herokuapp.com/download adresine gidelim.
         driver.get("https://the-internet.herokuapp.com/download");
         //3. foto.png dosyasını indirelim
-        WebElement fotoElementi= driver.findElement(By.linkText("foto.png"));
+        WebElement fotoElementi= driver.findElement(By.linkText("image.png"));
         fotoElementi.click();
         Thread.sleep(3000);
         //4. Dosyanın başarıyla indirilip indirilmediğini test edelim
 
         // Dosyayi Downloads klasorune indirecek
 
-        String dosyaYolu= "/Users/ahmetbulutluoz/Downloads/foto.png";
+        String dosyaYolu= "C:/Users/Mehmet FİLİK/Desktop";
 
         Assert.assertTrue(Files.exists(Paths.get(dosyaYolu)));
 
@@ -38,6 +38,17 @@ public class C05_FileDownloadTest extends TestBase {
         System.out.println(System.getProperty("user.dir"));
         System.out.println(System.getProperty("user.home"));
 
+        /*
+            biz Downloads'a indirdigimiz dosya yolunu 2'ye bolecegiz
+
+         */
+
+        String dosyaYoluDegisenKisim = System.getProperty("user.home");
+        String dosyaYoluherkesteAyniOlanKisim = "/Downloads/image.png";
+
+        dosyaYolu = dosyaYoluDegisenKisim + dosyaYoluherkesteAyniOlanKisim;
+
+        Assert.assertTrue(Files.exists(Paths.get(dosyaYolu)));
 
     }
 }
